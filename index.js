@@ -34,13 +34,15 @@ server.get("/projects", (req, res) => {
 server.post("/projects", (req, res) => {
   const { id, title } = req.body;
 
-  projects.push({
+  const newProject = {
     id,
     title,
     tasks: []
-  });
+  };
 
-  return res.json(projects);
+  projects.push(newProject);
+
+  return res.json(newProject);
 });
 
 server.put("/projects/:id", checkProjectExist, (req, res) => {
